@@ -1,0 +1,53 @@
+{
+  "name": "jtclabs/laravel-options",
+  "description": "Laravel configs dynamic persistence",
+  "type": "library",
+  "keywords": [
+    "laravel",
+    "options",
+    "configurations",
+    "dynamic configurations",
+    "database configurations"
+  ],
+  "homepage": "https://jtclabs.com/laravel-options",
+  "readme": "readme.md",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Matt Johnson",
+      "email": "matt@jtclabs.com",
+      "homepage": "https://johnothecoder.uk",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "matt@jtclabs.com",
+    "source": "https://github.com/jtclabs/laravel-options"
+  },
+  "funding": [
+    {
+      "type": "buymeacoffee",
+      "url": "https://www.buymeacoffee.com/RlDdw9npc"
+    }
+  ],
+  "require": {
+    "laravel/framework": "^5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "JtcLabs\\LaravelOptions\\": "src/"
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "extra": {
+    "laravel": {
+      "providers": [
+        "JtcLabs\\LaravelOptions\\ServiceProvider"
+      ],
+      "aliases": {
+        "LaravelOptions": "JtcLabsl\\LaravelOptions\\Facade"
+      }
+    }
+  }
+}
