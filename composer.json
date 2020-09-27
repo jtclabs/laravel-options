@@ -44,10 +44,7 @@
     "laravel": {
       "providers": [
         "JtcLabs\\LaravelOptions\\ServiceProvider"
-      ],
-      "aliases": {
-        "LaravelOptions": "JtcLabsl\\LaravelOptions\\Facade"
-      }
+      ]
     }
   }
 }
