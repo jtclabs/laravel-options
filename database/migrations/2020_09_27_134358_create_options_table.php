@@ -16,8 +16,8 @@ class CreateOptionsTable extends Migration
         Schema::create('options', function (Blueprint $table) {
             $table->string('config')->unique()->index();
             $table->text('value')->nullable();
-            $table->bool('is_encrypted')->default(false)->index();
-            $table->bool('is_autoloaded')->default(true)->index();
+            $table->boolean('is_encrypted')->default(false)->index();
+            $table->boolean('is_autoloaded')->default(true)->index();
         });
     }
 
