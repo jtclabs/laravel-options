@@ -5,6 +5,7 @@ namespace JtcLabs\LaravelOptions;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use JtcLabs\LaravelOptions\Contracts\HandlesOptionApplication;
 use JtcLabs\LaravelOptions\Contracts\HandlesOptionEncryption;
+use JtcLabs\LaravelOptions\Contracts\HandlesOptionPersistence;
 use JtcLabs\LaravelOptions\Contracts\HandlesOptionPersistencePreparation;
 use JtcLabs\LaravelOptions\Repository\OptionApplier;
 use JtcLabs\LaravelOptions\Repository\OptionDatabasePersistenceHandler;
@@ -36,7 +37,7 @@ class ServiceProvider extends LaravelServiceProvider
         );
 
         $this->app->bind(
-            HandlesOptionPersistencePreparation::class,
+            HandlesOptionPersistence::class,
             function(){
                 return new OptionDatabasePersistenceHandler(
                     resolve(HandlesOptionPersistencePreparation::class)
@@ -53,6 +54,15 @@ class ServiceProvider extends LaravelServiceProvider
             }
         );
 
+        $this->registerOptions(resolve(HandlesOptionApplication::class));
+
+    }
+
+    protected function registerOptions(HandlesOptionApplication $applier)
+    {
+        $applier->applyOptions(
+            $applier->retrieveAutoloadOptions()
+        );
     }
 
 }
