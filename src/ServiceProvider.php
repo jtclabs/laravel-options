@@ -2,6 +2,7 @@
 
 namespace JtcLabs\LaravelOptions;
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use JtcLabs\LaravelOptions\Contracts\HandlesOptionApplication;
 use JtcLabs\LaravelOptions\Contracts\HandlesOptionEncryption;
@@ -54,7 +55,9 @@ class ServiceProvider extends LaravelServiceProvider
             }
         );
 
-        $this->registerOptions(resolve(HandlesOptionApplication::class));
+        if (Schema::hasTable('options')) {
+            $this->registerOptions(resolve(HandlesOptionApplication::class));
+        }
 
     }
 
